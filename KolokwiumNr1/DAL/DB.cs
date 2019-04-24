@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KolokwiumNr1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,30 +9,34 @@ namespace KolokwiumNr1.DAL
 {
     public class DB
     {
-        PjatkDb pjatkDb;
+        pjatkDb pjatkDb;
         public DB()
         {
-            pjatkDb = new PjatkDb();
+            pjatkDb = new pjatkDb();
         }
 
-        public List<Emp> GetEmps()
+        public List<EMP> GetEmps()
         {
-            var emp = pjatkDb.Students;
+            var emp = pjatkDb.EMPs;
 
-            return emp.Include(s => s.Study).ToList();
+            return emp.ToList();
         }
 
-        public List<Dept> GetDept()
+        public List<DEPT> GetDepts()
         {
-            var dept = pjatkDb.Students;
+            var dept = pjatkDb.DEPTs;
 
             return dept.ToList();
         }
 
 
-        public void AddEmp(Emp emp)
+        public void AddEmp(EMP emp)
         {
-            pjatkDb.Students.Add(emp);
+            var id = (from EMP in pjatkDb.EMPs
+                     select EMP.EMPNO).Max();
+            emp.EMPNO = id + 1;
+            
+            pjatkDb.EMPs.Add(emp);
 
             pjatkDb.SaveChanges();
         }

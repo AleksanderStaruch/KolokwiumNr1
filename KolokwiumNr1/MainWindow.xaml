@@ -42,23 +42,23 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <DataGrid x:Name="DataGrid"  Grid.Row="1" CanUserAddRows="False" AutoGenerateColumns="False" MouseDoubleClick="DataGrid_MouseDoubleClick" SelectionChanged="DataGrid_SelectionChanged" Margin="5">
+            <DataGrid x:Name="DataGrid"  Grid.Row="1" CanUserAddRows="False" AutoGenerateColumns="False" Margin="5">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="Employee" Binding="{Binding Employee}">
+                    <DataGridTextColumn Width="*" Header="Employee" Binding="{Binding ENAME}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Width="*" Header="Job" Binding="{Binding Job}">
+                    <DataGridTextColumn Width="*" Header="Job" Binding="{Binding JOB}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Width="2*" Header="Dename" Binding="{Binding Dename}">
+                    <DataGridTextColumn Width="2*" Header="Dename" Binding="{Binding DEPT.DNAME}">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
