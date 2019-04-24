@@ -7,6 +7,95 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"   Margin="5" Padding="30 0 30 0"  HorizontalAlignment="Left">Szukaj</Label>
+
+                <TextBox x:Name="Text3" Grid.Column="1"  Margin="5" Padding="30 0 30 0" ></TextBox>
+
+                <Button x:Name="Search" Grid.Column="2" Margin="5" Padding="30 0 30 0" Click="Search_Click">Szukaj</Button>
+                
+                <Button x:Name="ShowAll" Grid.Column="3" Margin="5" Padding="30 0 30 0" Click="ShowAll_Click">Pokaż wszystkich</Button>
+
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <DataGrid x:Name="DataGrid"  Grid.Row="1" CanUserAddRows="False" AutoGenerateColumns="False" MouseDoubleClick="DataGrid_MouseDoubleClick" SelectionChanged="DataGrid_SelectionChanged" Margin="5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="Employee" Binding="{Binding Employee}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="*" Header="Job" Binding="{Binding Job}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="2*" Header="Dename" Binding="{Binding Dename}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="20">Dodaj pracownika</Label>
+
+            <Label Grid.Row="1" HorizontalAlignment="Right">Ename</Label>
+            <Label Grid.Row="2" HorizontalAlignment="Right">Job</Label>
+            <Label Grid.Row="3" HorizontalAlignment="Right">Dename</Label>
+
+            <TextBox x:Name="Text1" Grid.Row="1" Grid.Column="2" Margin="5" ></TextBox>
+            <TextBox x:Name="Text2" Grid.Row="2" Grid.Column="2" Margin="5" ></TextBox>
+            <ComboBox x:Name="ComboBox" Grid.Row="3" Grid.Column="2" Margin="5" >
+            </ComboBox>
+
+            <Button x:Name="Add" Grid.Row="4" Grid.Column="1" Click="Add_Click">Dodaj</Button>
+        </Grid>
+
     </Grid>
 </Window>
