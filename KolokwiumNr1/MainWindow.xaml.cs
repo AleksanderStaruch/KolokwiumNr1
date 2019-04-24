@@ -23,7 +23,6 @@ namespace KolokwiumNr1
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<EMP> list;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,13 +32,11 @@ namespace KolokwiumNr1
 
         public void SetDataGrid()
         {
-            //DataGrid.Items.Clear();
             var l = new DB().GetEmps();
             var resoult = from emp in l
                           select emp;
-            list = new ObservableCollection<EMP>(resoult.ToList());
 
-            DataGrid.ItemsSource = list;
+            DataGrid.ItemsSource = resoult;
         }
 
         public void SetComboBox()
@@ -60,10 +57,10 @@ namespace KolokwiumNr1
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             var resoult = from emp in new DB().GetEmps()
-                          where emp.ENAME == Text3.Text
+                          where emp.ENAME.StartsWith(Text3.Text)
                           select emp;
 
-            DataGrid.ItemsSource = resoult;
+            DataGrid.ItemsSource=resoult;
         }
 
         private void ShowAll_Click(object sender, RoutedEventArgs e)
@@ -83,14 +80,14 @@ namespace KolokwiumNr1
             {
                 Text1.BorderBrush = new SolidColorBrush(Colors.Black);
             }
-            if (String.IsNullOrWhiteSpace(Text1.Text))
+            if (String.IsNullOrWhiteSpace(Text2.Text))
             {
                 i++;
-                Text1.BorderBrush = new SolidColorBrush(Colors.Red);
+                Text2.BorderBrush = new SolidColorBrush(Colors.Red);
             }
             else
             {
-                Text1.BorderBrush = new SolidColorBrush(Colors.Black);
+                Text2.BorderBrush = new SolidColorBrush(Colors.Black);
             }
             if (i == 0)
             {
@@ -107,7 +104,7 @@ namespace KolokwiumNr1
         {
             if (Check())
             {
-                var deptnoID = (from d in new DB().GetDepts()
+                var deptno = (from d in new DB().GetDepts()
                                where d.DNAME == ComboBox.Text
                                select d.DEPTNO).SingleOrDefault();
                 
@@ -116,17 +113,16 @@ namespace KolokwiumNr1
                     EMPNO=0,
                     ENAME = Text1.Text,
                     JOB=Text2.Text,
-                    DEPTNO=deptnoID
+                    DEPTNO=deptno
                 };
-                
+
                 new DB().AddEmp(newEMP);
-                list.Add(newEMP);
                 
                 Text1.Text = "";
                 Text2.Text = "";
+
                 SetComboBox();
                 SetDataGrid();
-
             }
 
         }
