@@ -25,7 +25,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0"   Margin="5" Padding="30 0 30 0"  HorizontalAlignment="Left">Szukaj</Label>
@@ -33,7 +32,6 @@
                 <TextBox x:Name="Text3" Grid.Column="1"  Margin="5" Padding="30 0 30 0" ></TextBox>
 
                 <Button x:Name="Search" Grid.Column="2" Margin="5" Padding="30 0 30 0" Click="Search_Click">Szukaj</Button>
-                
                 <Button x:Name="ShowAll" Grid.Column="3" Margin="5" Padding="30 0 30 0" Click="ShowAll_Click">Pokaż wszystkich</Button>
 
             </Grid>
